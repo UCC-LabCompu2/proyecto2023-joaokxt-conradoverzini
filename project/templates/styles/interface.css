@@ -72,11 +72,14 @@ footer p{
 }
 #purple{
     background-color: #7D53F5;
-    height: 1.2%;
+    height: 0.8%;
 }
 #logo{
     margin-left:auto;
     width: auto;
     height: 100%;
     top: 0px;
+}
+#copyright{
+    padding: 1em;
 }
