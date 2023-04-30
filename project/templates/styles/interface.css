@@ -83,3 +83,120 @@ footer p{
 #copyright{
     padding: 1em;
 }
+
+.line_purple{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 230px;
+    left: 90px;
+}
+
+.rectangle_purple{
+    background-color: #940bb6;
+    width: 200px;
+    height: 35px;
+}
+
+.rectangle_purple:nth-child(2) {
+    margin-left: 25px;
+}
+
+.rectangle_purple:nth-child(3) {
+    margin-left: 125px;
+}
+
+.rectangle_purple:nth-child(4) {
+    margin-left: 125px;
+}
+
+.rectangle_purple:nth-child(5) {
+    margin-left: 25px;
+}
+
+.line_blue{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 280px;
+    left: 90px;
+}
+
+.rectangle_blue{
+    background-color: #4444ad;
+    width: 200px;
+    height: 35px;
+}
+
+.rectangle_blue:nth-child(2) {
+    margin-left: 25px;
+}
+
+.rectangle_blue:nth-child(3) {
+    margin-left: 125px;
+}
+
+.rectangle_blue:nth-child(4) {
+    margin-left: 125px;
+}
+
+.rectangle_blue:nth-child(5) {
+    margin-left: 25px;
+}
+
+.line_green{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 330px;
+    left: 90px;
+}
+
+.rectangle_green{
+    background-color: #42a442;
+    width: 200px;
+    height: 35px;
+}
+
+.rectangle_green:nth-child(2) {
+    margin-left: 25px;
+}
+
+.rectangle_green:nth-child(3) {
+    margin-left: 125px;
+}
+
+.rectangle_green:nth-child(4) {
+    margin-left: 125px;
+}
+
+.line_yellow{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 380px;
+    left: 90px;
+}
+
+.rectangle_yellow{
+    background-color: #e5e527;
+    width: 200px;
+    height: 35px;
+    font-size: 15px;
+    font-family: 'Press Start 2P', cursive;
+    color: #000000;
+}
+
+.rectangle_yellow:nth-child(2) {
+    margin-left: 350px;
+}
+
+.paleta{
+    background-color: #b6a4a4;
+    width: 230px;
+    height: 25px;
+    position: absolute;
+    bottom: 130px;
+    left: 625px;
+}
+
