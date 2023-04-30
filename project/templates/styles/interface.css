@@ -6,24 +6,35 @@ html, body{
     max-width: 1920px;
     background: #484747;
 }
-h1,h2,h3,h4,h5,h6{
-    color: #ffffff;
-    font-size: 2vmin;
-    text-align: center;
-}
-div{
-    display: flex;
-    text-justify: auto;
-}
 .black{
     background-color: #000000;
     width: auto;
     height: 13%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.black h1{
+    color: #ffffff;
+    text-align: center;
+    margin: 0;
+    flex: 1;
+    font-size: 2em;
 }
 .fuchsia{
     background-color: #9A1B9C;
     width: auto;
     height: 3.7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.fuchsia h2{
+    color: #ffffff;
+    text-align: center;
+    margin: 0;
+    flex: 1;
+    font-size: 1em;
 }
 .red{
     background-color: #B41C1C;
@@ -50,12 +61,8 @@ div{
     width: auto;
     height: 1.2%;
 }
-.titulo{
-    padding: 1%;
-    word-wrap: break-word;
-}
 #logo{
-    float: right;
+    margin-left:auto;
     width: auto;
     height: 100%;
     top: 0px;
