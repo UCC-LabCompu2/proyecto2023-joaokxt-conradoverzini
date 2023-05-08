@@ -11,7 +11,8 @@ html, body{
     justify-content: flex-start;
 }
 header{
-    height:35% ;
+    height:30% ;
+    min-height: 150px;
 }
 header div{
     width: 100%;
@@ -38,7 +39,7 @@ footer p{
 }
 #black{
     background-color: #000000;
-    height: 40%;
+    height: 50%;
     margin-top: 0;
 }
 #black h1{
@@ -53,7 +54,7 @@ footer p{
 }
 #fuchsia{
     background-color: #9A1B9C;
-    height: 10%;
+    height: 20%;
 }
 #fuchsia h2{
     color: #ffffff;
@@ -64,15 +65,15 @@ footer p{
 }
 #red{
     background-color: #B41C1C;
-    height: 8%;
+    height: 15%;
 }
 #orange{
     background-color: #DC972F;
-    height: 6%;
+    height: 8%;
 }
 #yellow{
     background-color: #F1E041;
-    height: 3%;
+    height: 4%;
 }
 #green{
     background-color: #6FF141;
@@ -80,7 +81,7 @@ footer p{
 }
 #purple{
     background-color: #7D53F5;
-    height: 1%;
+    height: 1.2%;
 }
 #logo{
     margin-left:auto;
@@ -93,9 +94,11 @@ footer p{
 }
 
 .blocks {
+    margin-top: 2.5vw;
     margin-left: 5vw;
     margin-right: 5vw;
-    height: 50%;
+    height: 60%;
+    min-height: 420px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -104,29 +107,34 @@ footer p{
 .line{
     margin-top: 1em;
     width: 100%;
+    min-width: 580px;
     display: flex;
     justify-content: center;
 }
 .purple_rectangle {
     width: 10.5em;
+    min-width: 60px;
     height: 2em;
     margin-left: 2vw;
     background-image: linear-gradient(#ad10d7, #7a0896);
 }
 .blue_rectangle{
     width: 10.5em;
+    min-width: 60px;
     height: 2em;
     margin-left: 2vw;
     background-image: linear-gradient(#5555d0, #373780);
 }
 .green_rectangle{
     width: 10.5em;
+    min-width: 60px;
     height: 2em;
     margin-left: 2vw;
     background-image: linear-gradient(#55c955, #348134);
 }
 .yellow_rectangle{
     width: 10.5em;
+    min-width: 60px;
     height: 2em;
     margin-left: 2vw;
     background-image: linear-gradient(#efef32, #abab20);
@@ -168,3 +176,16 @@ footer p{
     width: 15em;
     height: 1.5em;
 }
+.texto {
+    margin-top: 2vw;
+    margin-left: 20vw;
+    max-width: 60vw;
+    text-align: center;
+    color: #ffffff;
+}
+.texto p {
+    font-size: 0.7em;
+    line-height: 2.4;
+    margin-bottom: 1vw;
+}
+
