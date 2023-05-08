@@ -6,6 +6,7 @@
     <meta content="Conrado Verzini y Joao Klein" name="author">
     <meta content="El clasico juego Breakout de Atari" name="description">
     <meta content="Breakout, Atari" name="palabras-principales">
+    <link href="/images/favicon.ico" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="styles/interface.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,17 +18,20 @@
     </style>
 </head>
 <body>
-    <div id="black" class="header">
-        <h1>BREAKOUT</h1>
-    </div>
-    <div id="fuchsia" class="header">
-        <h2>El clásico de Atari</h2>
-    </div>
-    <div id="red" class="header"></div>
-    <div id="orange" class="header"></div>
-    <div id="yellow" class="header"></div>
-    <div id="green" class="header"></div>
-    <div id="purple" class="header"></div>
+    <header>
+        <div id="black">
+            <h1>BREAKOUT</h1>
+        </div>
+        <div id="fuchsia">
+            <h2>El clásico de Atari</h2>
+        </div>
+        <div id="red"></div>
+        <div id="orange"></div>
+        <div id="yellow"></div>
+        <div id="green"></div>
+        <div id="purple"></div>
+    </header>
+    
 
     <div class="blocks">
             <div class="line">
@@ -37,6 +41,8 @@
                 <div class="purple_rectangle"></div>
                 <div class="purple_rectangle"></div>
                 <div class="purple_rectangle"></div>
+                <div class="purple_rectangle"></div>
+                <div class="purple_rectangle"></div>
             </div>
             <div class="line">
                 <div class="blue_rectangle"></div>
@@ -45,6 +51,8 @@
                 <div class="blue_rectangle"></div>
                 <div class="rectangle"></div>
                 <div class="blue_rectangle"></div>
+                <div class="blue_rectangle"></div>
+                <div class="blue_rectangle"></div>
             </div>
             <div class="line">
                 <div class="green_rectangle"></div>
@@ -53,13 +61,17 @@
                 <div class="rectangle"></div>
                 <div class="rectangle"></div>
                 <div class="green_rectangle"></div>
+                <div class="green_rectangle"></div>
+                <div class="rectangle"></div>
             </div>
             <div class="line">
-                <div class="yellow_rectangle"></div>
+                <div class="rectangle"></div>
                 <button class="boton">JUGAR</button>
-                <button class="boton">ACERCA DE</button>
+                <a href="controles.html"><button class="boton">CONTROLES</button></a>
+                <div class="yellow_rectangle"></div>
                 <div class="rectangle"></div>
                 <div class="rectangle"></div>
+                <a href="acerca_de.html"><button class="boton">ACERCA DE</button></a>
                 <div class="rectangle"></div>
             </div>
             <div class="line_pelota">
@@ -70,7 +82,6 @@
                 </div>
             </div>
     </div>
-
 
     <footer>
         <div id="copyright">
