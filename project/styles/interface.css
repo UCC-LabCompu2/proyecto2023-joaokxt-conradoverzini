@@ -3,9 +3,7 @@ html, body{
     padding: 0;
     height: 100%;
     width: 100%;
-    max-height: 1080px;
     min-height: 420px;
-    max-width: 1920px;
     min-width: 580px;
     background-color: #383737;
     display: flex;
@@ -13,7 +11,7 @@ html, body{
     justify-content: flex-start;
 }
 header{
-    height:30%;
+    height: 30%;
     min-height: 150px;
 }
 header div{
@@ -83,7 +81,7 @@ footer p{
 }
 #purple{
     background-color: #7D53F5;
-    height: 1.2%;
+    height: 1.5%;
 }
 #logo{
     margin-left:auto;
@@ -179,8 +177,8 @@ footer p{
     height: 1.5em;
 }
 .texto {
-    margin-top: 2vw;
-    margin-bottom: 10vw;
+    padding-top: 2vw;
+    padding-bottom: 10vw;
     margin-left: 20vw;
     max-width: 60vw;
     text-align: center;
@@ -193,14 +191,39 @@ footer p{
 }
 .controles{
     margin-top: -10vw;
-    margin-bottom: 15vw;
+    margin-bottom: 5vw;
     margin-left: 20vw;
     max-width: 60vw;
     text-align: center;
     color: #ffffff;
 }
-
 .controles img {
     width: 25vw;
     height: auto;
+}
+.spacer{
+    height: 10%;
+    visibility: hidden;
+}
+#acerca_de{
+    margin-left: 5vw;
+}
+.about{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.retrato{
+    height: 10vw;
+    width: 8vw;
+    min-height: 100px;
+    min-width: 80px;
+    padding-right: 20px;
+}
+.galeria{
+    padding-left: 5vw;
+    margin-top: 5vw;
+}
+.galeria h1{
+    color: #ffffff;
 }
