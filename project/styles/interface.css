@@ -192,9 +192,15 @@ footer p{
     margin-bottom: 1vw;
 }
 .controles{
-    margin-top: 0.5vw;
+    margin-top: -10vw;
+    margin-bottom: 15vw;
     margin-left: 20vw;
     max-width: 60vw;
     text-align: center;
     color: #ffffff;
+}
+
+.controles img {
+    width: 25vw;
+    height: auto;
 }
