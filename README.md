@@ -15,4 +15,4 @@ Se cuenta con una página de instrucciones, una que cuenta la historia del juego
 * CSS
 
 ## Links
-* GithubPages: 
+* GithubPages: https://joaokxt.github.io/
