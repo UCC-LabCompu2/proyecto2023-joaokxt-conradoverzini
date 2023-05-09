@@ -282,3 +282,13 @@ form{
     justify-content: center;
     color: #ffffff;
 }
+.juego{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.muro{
+
+}
