@@ -3,8 +3,8 @@ html, body {
     padding: 0;
     height: 100%;
     width: 100%;
-    min-height: 420px;
-    min-width: 580px;
+    min-height: 720px;
+    min-width: 1280px;
     background-color: #383737;
     display: flex;
     flex-direction: column;
@@ -56,7 +56,7 @@ footer p {
     text-align: center;
     margin: 0;
     width: 100%;
-    font-size: 3em;
+    font-size: 5vh;
 }
 
 #black p {
@@ -73,7 +73,7 @@ footer p {
     text-align: center;
     margin: 0;
     flex: 1;
-    font-size: 1.5em;
+    font-size: 1.5vh;
 }
 
 #red {
@@ -117,7 +117,6 @@ footer p {
     margin-left: 5vw;
     margin-right: 5vw;
     height: 60%;
-    min-height: 420px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -125,16 +124,16 @@ footer p {
 }
 
 .line {
-    margin-top: 1em;
+    margin-top: 1vh;
     width: 100%;
-    min-width: 580px;
     display: flex;
     justify-content: center;
 }
-.line div{
+
+.line div {
     width: 10.5em;
     min-width: 60px;
-    height: 3vh;
+    height: 2em;
     min-height: 20px;
     margin-left: 2vw;
 }
@@ -161,11 +160,12 @@ footer p {
 
 .boton {
     width: 10.5em;
-    height: 3vh;
+    height: 2em;
     min-height: 20px;
     margin-left: 2vw;
     background-image: linear-gradient(#e5e532, #abab20);
     font-size: 1em;
+    min-font-size: 20px;
     font-family: 'Press Start 2P', cursive;
     color: #000000;
 }
@@ -201,7 +201,7 @@ footer p {
     background-image: linear-gradient(#ffffff, #73736a);
     width: 2.5em;
     height: 2.5em;
-    margin-right: 40vw;
+    margin-right: 45%;
     border-radius: 50%;
 }
 
@@ -210,9 +210,10 @@ footer p {
     display: flex;
     justify-content: center;
 }
+
 .paleta {
     background-image: linear-gradient(#ffffff, #73736a);
-    width: 15em;
+    width: 15%;
     height: 1.5em;
 }
 
@@ -245,7 +246,7 @@ footer p {
 }
 
 .spacer {
-    height: 10%;
+    height: 15%;
     visibility: hidden;
 }
 
@@ -276,23 +277,86 @@ footer p {
 .galeria h1 {
     color: #ffffff;
 }
-.formulario{
+
+.formulario {
     padding-top: 2vh;
-}
-form{
     display: flex;
     justify-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 50vh;
+    font-size: 1em;
+    font-family: 'Press Start 2P', cursive;
     color: #ffffff;
 }
-.juego{
+
+fieldset {
+    display: flex;
+    justify-content: center;
+    padding: 2em;
+    margin-bottom: 2vh;
+}
+
+.game {
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
 }
-.muro{
-    width: 23.5%;
+
+.wall {
+    width: 20%;
     height: 100%;
+    min-width: 116px;
     background-color: #954B0C;
+    padding-top: 2vh;
+    padding-right: 0.25vw;
+    padding-left: 0.25vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #ffffff;
 }
+.brick_row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    height: 6.25%;
+    margin-bottom: 1.5vh;
+}
+.brick{
+    background-color: #400E03;
+    height: 100%;
+    width: 18%;
+    margin-left: 0.5vw;
+}
+.half_brick{
+    background-color: #400E03;
+    height: 100%;
+    width: 12%;
+    margin-left: 0.5vw;
+}
+.empty_brick{
+    background-color: #954B0C;
+    height: 100%;
+    width: 12%;
+    margin-left: 0.5vw;
+}
+.status{
+    border-width: 2px;
+    border-style: solid;
+    border-color: #000000;
+    margin-bottom: 2px;
+}
+.screen{
+    width: 60%;
+    min-width: 348px;
+    height: 100%;
+}
+
