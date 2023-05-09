@@ -20,9 +20,10 @@
 <body>
 <header>
     <div id="black" class="header">
-        <h1>CONTROLES</h1>
+        <h1>USUARIO</h1>
     </div>
     <div id="fuchsia" class="header">
+        <h2>Primero, creemos tu usuario</h2>
     </div>
     <div id="red" class="header"></div>
     <div id="orange" class="header"></div>
@@ -30,20 +31,28 @@
     <div id="green" class="header"></div>
     <div id="purple" class="header"></div>
 </header>
-<section class="texto">
-    <h3>CÓMO JUGAR</h3>
-    <p>
-        Breakout es un juego en el que se mueve una paleta para rebotar una pelota y romper bloques.
-        El objetivo es romper todos los bloques sin que la pelota caiga al suelo, y de esa manera ir obteniendo
-        power-ups
-        y ganando el máximo de puntos posible. Si la pelota cae al suelo, se pierde una vida. El juego termina cuando se
-        pierden todas las vidas.
-        Los únicos controles usados son la flecha derecha e izquierda.
-    </p>
-</section>
-<section class="controles">
-    <h3>TECLAS</h3>
-    <img src="styles/images/teclas.png" alt="Tecla de flecha derecha e izquierda">
+<section class="formulario">
+    <form>
+        <fieldset>
+            <legend><p>Datos</p></legend>
+            <table>
+                <tr>
+                    <th><label for="nombre"><p>Nombre: </p></label></th>
+                    <th><input type="text" name="Nombre" id="nombre"></th>
+                </tr>
+                <tr>
+                    <th>
+                        <input type="radio" name="sexo" id="masculino" value="masculino">
+                        <label for="masculino"><p>Masculino</p></label>
+                    </th>
+                    <th>
+                        <input type="radio" name="sexo" id="femenino" value="femenino">
+                        <label for="masculino"><p>Femenino</p></label>
+                    </th>
+                </tr>
+            </table>
+        </fieldset>
+    </form>
 </section>
 <div class="spacer">.</div>
 <footer>
@@ -53,4 +62,5 @@
     <img id="logo" src="styles/images/atari_logo.png" alt="Logo de Atari">
 </footer>
 </body>
+
 </html>
