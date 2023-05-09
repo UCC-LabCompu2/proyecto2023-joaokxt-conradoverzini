@@ -33,7 +33,7 @@
 </header>
 <section class="formulario">
     <!--RECORDAR PONER ATRIBUTOS PARA EL FORMULARIO PARA JS-->
-    <form>
+    <form method="POST" action="juego.html">
         <fieldset>
             <legend>Datos</legend>
             <table>
@@ -50,7 +50,7 @@
         <fieldset>
             <legend><p>Sexo</p></legend>
             <input type="radio" name="sexo" id="masculino" value="masculino">
-            <label for="masculino">Masculino</label><br>
+            <label for="masculino">Masculino</label>
             <input type="radio" name="sexo" id="femenino" value="femenino">
             <label for="femenino">Femenino</label>
         </fieldset>
@@ -62,11 +62,9 @@
                 <option value="Difícil">Difícil</option>
             </select>
         </fieldset>
+        <button class="boton" type="submit"><em>EMPEZAR</em></button>
     </form>
 </section>
-<a href="juego.html">
-    <button class="boton" id="empezar">EMPEZAR</button>
-</a>
 <div class="spacer">.</div>
 <footer>
     <a href="index.html">

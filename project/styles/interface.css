@@ -10,6 +10,10 @@ html, body {
     flex-direction: column;
     justify-content: flex-start;
 }
+h1, h2, h3, h4, h5, h6, p {
+    font-family: 'Press Start 2P', cursive;
+    color: #ffffff;
+}
 
 header {
     height: 30%;
@@ -261,7 +265,7 @@ footer p {
     margin-bottom: 2vh;
 }
 
-.retrato {
+.portrait {
     height: 10em;
     width: 8em;
     min-height: 100px;
@@ -269,13 +273,9 @@ footer p {
     padding-right: 20px;
 }
 
-.galeria {
+.gallery {
     padding-left: 5vw;
     margin-top: 4vh;
-}
-
-.galeria h1 {
-    color: #ffffff;
 }
 
 .formulario {
@@ -314,9 +314,7 @@ fieldset {
     height: 100%;
     min-width: 116px;
     background-color: #954B0C;
-    padding-top: 2vh;
-    padding-right: 0.25vw;
-    padding-left: 0.25vw;
+    padding: 2vh 0.25vw 0.25vw 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -331,13 +329,13 @@ fieldset {
     margin-bottom: 1.5vh;
 }
 .brick{
-    background-color: #400E03;
+    background-image: linear-gradient(#400E03, #5b1506);
     height: 100%;
     width: 18%;
     margin-left: 0.5vw;
 }
 .half_brick{
-    background-color: #400E03;
+    background-image: linear-gradient(#400E03, #5b1506);
     height: 100%;
     width: 12%;
     margin-left: 0.5vw;
@@ -352,7 +350,9 @@ fieldset {
     border-width: 2px;
     border-style: solid;
     border-color: #000000;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 .screen{
     width: 60%;
