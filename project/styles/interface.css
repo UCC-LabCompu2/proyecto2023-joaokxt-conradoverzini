@@ -14,6 +14,9 @@ html, body {
 header {
     height: 30%;
     min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 header div {
@@ -21,7 +24,7 @@ header div {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 0.2em;
+    border-bottom: 2px;
     border-bottom-style: solid;
     border-bottom-color: #000000;
 }
@@ -53,7 +56,7 @@ footer p {
     text-align: center;
     margin: 0;
     width: 100%;
-    font-size: 2em;
+    font-size: 3em;
 }
 
 #black p {
@@ -70,7 +73,7 @@ footer p {
     text-align: center;
     margin: 0;
     flex: 1;
-    font-size: 0.7em;
+    font-size: 1.5em;
 }
 
 #red {
@@ -214,7 +217,6 @@ footer p {
 }
 
 .texto {
-    padding-top: 4vh;
     padding-bottom: 10vh;
     margin-left: 20vw;
     max-width: 60vw;
@@ -290,5 +292,7 @@ form{
     justify-content: flex-start;
 }
 .muro{
-
+    width: 23.5%;
+    height: 100%;
+    background-color: #954B0C;
 }
