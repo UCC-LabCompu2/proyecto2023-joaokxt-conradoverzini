@@ -33,24 +33,25 @@
             <legend>Datos</legend>
             <table>
                 <tr>
-                    <th><label for="nombre">Nombre: </label></th>
-                    <th><input type="text" name="Nombre" id="nombre"></th>
-                </tr>
-                <tr>
                     <th><label for="nickname">Nickname: </label></th>
                     <th><input type="text" name="Nickname" id="nickname"></th>
+                </tr>
+                <tr>
+                    <th><label for="mail">E-mail: </label></th>
+                    <th><input type="email" name="E-mail" id="mail"></th>
                 </tr>
             </table>
         </fieldset>
         <fieldset>
-            <legend>Sexo</legend>
-            <input type="radio" name="sexo" id="masculino" value="masculino">
-            <label for="masculino">Masculino</label>
-            <input type="radio" name="sexo" id="femenino" value="femenino">
-            <label for="femenino">Femenino</label>
+            <legend>Experiencia</legend>
+            <input type="radio" name="experiencia" id="novato" value="novato">
+            <label for="novato">Primera vez jugando</label>
+            <input type="radio" name="experiencia" id="experimentado" value="experimentado">
+            <label for="experimentado">Soy buenisimo</label>
         </fieldset>
         <fieldset>
-            <legend>Dificultad</legend>
+            <legend>Selecciona el modo</legend>
+            <label for="dificultad">Dificultad: </label>
             <select name="dificultad" id="dificultad">
                 <option value="Fácil">Fácil</option>
                 <option value="Regular">Regular</option>

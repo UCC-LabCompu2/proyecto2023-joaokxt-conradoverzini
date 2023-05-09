@@ -9,6 +9,7 @@ html, body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    justify-items: center;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -115,6 +116,7 @@ footer p {
 
 #copyright {
     padding: 1em;
+    margin-left: 4px;
 }
 
 .blocks {
@@ -219,7 +221,6 @@ footer p {
 }
 
 .texto {
-    padding-bottom: 10vh;
     margin-left: 20vw;
     max-width: 60vw;
     text-align: center;
@@ -233,7 +234,7 @@ footer p {
 }
 
 .controles {
-    margin-top: -10vh;
+    padding-top: 2vw;
     margin-bottom: 5vw;
     margin-left: 20vw;
     max-width: 60vw;
@@ -242,24 +243,25 @@ footer p {
 }
 
 .controles img {
-    width: 25vw;
+    width: 20vw;
     height: auto;
 }
 
 .spacer {
-    height: 15%;
+    height: 14%;
     visibility: hidden;
 }
 
 #acerca_de {
     margin-left: 5vw;
+    padding-top: 2vw;
 }
 
 .about {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    margin-bottom: 2vh;
+    margin-bottom: 10vh;
 }
 
 .portrait {
@@ -273,6 +275,7 @@ footer p {
 .gallery {
     padding-left: 5vw;
     margin-top: 4vh;
+    margin-bottom: 10vh;
 }
 
 .formulario {
