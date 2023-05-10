@@ -15,6 +15,6 @@ Se cuenta con una página de instrucciones, una que cuenta la historia del juego
 * CSS
 
 ## Links
-* GithubPages: https://joaokxt.github.io/
+* GithubPages: [Proyecto Breakout](https://joaokxt.github.io/)
 
 Se tuvo que sacar el botón de "empezar" en registrar_usuario.html del formulario pues ghpages no sopora los métodos de submit del formulario. Por eso la visualización es distinta y rara.
