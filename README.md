@@ -15,4 +15,4 @@ Se cuenta con una página de instrucciones, una que cuenta la historia del juego
 * CSS
 
 ## Links
-* GithubPages: [Proyecto Breakout](https://joaokxt.github.io/](https://ucc-labcompu2.github.io/proyecto2023-klein-verzini/))
+* GithubPages: [Proyecto Breakout](https://ucc-labcompu2.github.io/proyecto2023-klein-verzini/)
