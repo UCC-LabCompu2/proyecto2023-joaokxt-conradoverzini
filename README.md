@@ -12,7 +12,7 @@ Se cuenta con una página de instrucciones, una que cuenta la historia del juego
 
 ## Tecnologías usadas
 * HTML5
-* CSS
+* CSS3
 
 ## Links
 * GithubPages: [Proyecto Breakout](https://ucc-labcompu2.github.io/proyecto2023-klein-verzini/)
