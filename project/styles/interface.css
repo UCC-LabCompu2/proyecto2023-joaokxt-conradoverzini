@@ -74,12 +74,32 @@ footer p {
     height: 20%;
 }
 
+@keyframes animacion_texto {
+    0% {
+        color: #ffffff;
+    }
+    25% {
+        color: #e3ff00;
+    }
+    50% {
+        color: #967cbe;
+    }
+    75%{
+        color: #28eab2;
+    }
+    100%{
+        color: #1bff00;
+    }
+}
+
 #fuchsia h2 {
-    color: #ffffff;
     text-align: center;
     margin: 0;
     flex: 1;
     font-size: 1.5vh;
+    animation: animacion_texto;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
 }
 
 #red {
@@ -277,7 +297,11 @@ footer p {
     margin-top: 4vh;
     margin-bottom: 10vh;
 }
-
+caption{
+    font-size: 1em;
+    font-family: 'Press Start 2P', cursive;
+    color: #ffffff;
+}
 .formulario {
     padding-top: 2vh;
     display: flex;
