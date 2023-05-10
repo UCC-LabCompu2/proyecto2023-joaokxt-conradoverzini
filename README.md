@@ -16,3 +16,4 @@ Se cuenta con una página de instrucciones, una que cuenta la historia del juego
 
 ## Links
 * GithubPages: [Proyecto Breakout](https://ucc-labcompu2.github.io/proyecto2023-klein-verzini/)
+Se creó otra rama 'pages' en la que los archivos html se encuentran en la raíz, podiendo acceder al proyecto por el link de ghpages.
