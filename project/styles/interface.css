@@ -12,6 +12,17 @@ html, body {
     justify-items: center;
 }
 
+caption {
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
 h1, h2, h3, h4, h5, h6, p {
     font-family: 'Press Start 2P', cursive;
     color: #ffffff;
@@ -384,7 +395,7 @@ fieldset {
     margin-right: 10%;
 }
 
-.screen {
+#screen {
     width: 60%;
     min-width: 348px;
     height: 100%;

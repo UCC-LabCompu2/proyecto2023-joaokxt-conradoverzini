@@ -11,8 +11,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="script.js"></script>
 </head>
-<body>
+<body onload="juego()">
 <header>
     <div id="black" class="header">
         <h1>BREAKOUT</h1>
@@ -111,7 +112,7 @@
             <div class="brick"></div>
         </div>
     </div>
-    <canvas class="screen">
+    <canvas id="screen">
         Tu browser no soporta el canvas de html5
     </canvas>
     <div class="wall" id="right_wall">
