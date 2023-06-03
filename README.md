@@ -1,4 +1,4 @@
-# proyecto2023-joaokxt-conradoverzini
+# proyecto2023-klein-verzini
 
 # Breakout
 El proyecto consiste en una página en la que se puede jugar el clásico Breakout de Atari, un juego que se encuentra en celulares, computadoras, consolas y arcades.
@@ -12,7 +12,9 @@ Se cuenta con una página de instrucciones, una que cuenta la historia del juego
 
 ## Tecnologías usadas
 * HTML5
-* CSS
+* CSS3
 
 ## Links
 * GithubPages: [Proyecto Breakout](https://ucc-labcompu2.github.io/proyecto2023-klein-verzini/)
+
+Se creó otra rama 'pages' en la que los archivos html se encuentran en la raíz, podiendo acceder al proyecto por el link de ghpages.
