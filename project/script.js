@@ -1,5 +1,5 @@
 let enviarFormulario = () =>{
-    
+
 }
 
 let juego = () => {
@@ -73,14 +73,32 @@ let juego = () => {
 
     let dibujarPaleta = () => {
         ctx.beginPath();
-        ctx.rect(xPaleta-25, yPaleta, anchoPaleta, alturaPaleta);
+        ctx.rect(xPaleta-anchoPaleta/2, yPaleta, anchoPaleta, alturaPaleta);
         ctx.fillStyle="#ffffff";
         ctx.fill();
         ctx.closePath();
     }
 
     let dibujarLadrillos = () => {
-
+        for(var c=0; c<columnasLadrillos; c++){
+            for(var f=0; f<filasLadrillos; f++){
+                var xLadrillo = (c*(anchoLadrillo+paddingLadrillo))+margenIzquierdo;
+                var yLadrillo = (f*(alturaLadrillo+paddingLadrillo))+margenSuperior;
+                ladrillos[c][f].x=xLadrillo;
+                ladrillos[c][f].y=yLadrillo;
+                ctx.beginPath();
+                ctx.rect(xLadrillo, yLadrillo, anchoLadrillo, alturaLadrillo);
+                if(f==0){
+                    ctx.fillStyle="#f3360e";
+                }else if(f==1){
+                    ctx.fillStyle="#e5f30e";
+                }else if(f==2){
+                    ctx.fillStyle="#180ef3";
+                }
+                ctx.fill();
+                ctx.closePath();
+            }
+        }
     }
 
     let gameOver = () => {
@@ -96,6 +114,7 @@ let juego = () => {
         //DIBUJAR ELEMENTOS
         dibujarPelota();
         dibujarPaleta();
+        dibujarLadrillos();
 
         //CALCULO REBOTE PELOTA CON PARED
         if(xPelota+dx>canvas.width-radioPelota || xPelota+dx<radioPelota){
