@@ -1,5 +1,15 @@
 let enviarFormulario = () =>{
+    let nickname, mail, experiencia, botonEnviar;
+    nickname=document.getElementById("nickname").value;
+    mail=document.getElementById("mail").value;
+    experiencia=document.querySelector('input[name="experiencia"]:checked');
+    botonEnviar=document.getElementById("submit");
 
+    if(nickname=="" || mail=="" || experiencia==null ){
+        alert("Por favor, complete todo el formulario antes de jugar");
+        botonEnviar.disabled=true;
+        document.location.reload();
+    }
 }
 
 let juego = () => {
@@ -10,34 +20,39 @@ let juego = () => {
     var puntos=0;
     var nivel=1;
 
-    var xPaleta=canvas.width/2;
-    var yPaleta=canvas.height-(canvas.height/8);
-    var anchoPaleta=50;
-    var alturaPaleta=2;
-    var flechaDerecha=false;
-    var flechaIzquierda=false;
-    
-    var xPelota=xPaleta;
-    var yPelota=yPaleta-4;
-    var radioPelota=2;
     var dx=2;
     var dy=-2;
 
-    var filasLadrillos = 3;
-    var columnasLadrillos = 10;
-    var anchoLadrillo = 20;
+    var flechaDerecha=false;
+    var flechaIzquierda=false;
+    
+    var paletaX = canvas.width/2;
+    var paletaY = canvas.height-(canvas.height/8);
+    var paletaAncho = 50;
+    var paletaAltura = 2;
+
+    var pelotaX = paletaX;
+    var pelotaY = paletaY-4;
+    var pelotaRadio = 2;
+
+    var filasLadrillos = 10;
+    var columnasLadrillos = 16;
+    var anchoLadrillo = 16;
     var alturaLadrillo = 3;
-    var paddingLadrillo = 10;
-    var margenSuperior = 30;
-    var margenIzquierdo = 10;
+    var paddingLadrillo = 2;
+    var margenSuperior = 5;
+    var margenIzquierdo = 5;
     const ladrillos = [];
     for(let c=0; c<columnasLadrillos; c++) {
         ladrillos[c] = [];
-        for (let r = 0; r < filasLadrillos; r++) {
-            ladrillos[c][r] = {x: 0, y: 0};
+        for (let f = 0; f < filasLadrillos; f++) {
+            ladrillos[c][f] = {
+                x: 0,
+                y: 0,
+                estado: 1
+            };
         }
     }
-
 
     document.addEventListener(
         "keydown", 
@@ -63,9 +78,10 @@ let juego = () => {
         },
         false);
 
+    
     let dibujarPelota = () => {
         ctx.beginPath();
-        ctx.arc(xPelota, yPelota, radioPelota, 0, Math.PI*2);
+        ctx.arc(pelotaX, pelotaY, pelotaRadio, 0, Math.PI*2);
         ctx.fillStyle="#ffffff";
         ctx.fill();
         ctx.closePath();
@@ -73,7 +89,7 @@ let juego = () => {
 
     let dibujarPaleta = () => {
         ctx.beginPath();
-        ctx.rect(xPaleta-anchoPaleta/2, yPaleta, anchoPaleta, alturaPaleta);
+        ctx.rect(paletaX-paletaAncho/2, paletaY, paletaAncho, paletaAltura);
         ctx.fillStyle="#ffffff";
         ctx.fill();
         ctx.closePath();
@@ -82,78 +98,68 @@ let juego = () => {
     let dibujarLadrillos = () => {
         for(var c=0; c<columnasLadrillos; c++){
             for(var f=0; f<filasLadrillos; f++){
-                var xLadrillo = (c*(anchoLadrillo+paddingLadrillo))+margenIzquierdo;
-                var yLadrillo = (f*(alturaLadrillo+paddingLadrillo))+margenSuperior;
-                ladrillos[c][f].x=xLadrillo;
-                ladrillos[c][f].y=yLadrillo;
-                ctx.beginPath();
-                ctx.rect(xLadrillo, yLadrillo, anchoLadrillo, alturaLadrillo);
-                if(f==0){
-                    ctx.fillStyle="#f3360e";
-                }else if(f==1){
-                    ctx.fillStyle="#e5f30e";
-                }else if(f==2){
-                    ctx.fillStyle="#180ef3";
+                if(ladrillos[c][f].estado==1){
+                  var xLadrillo = (c*(anchoLadrillo+paddingLadrillo))+margenIzquierdo;
+                    var yLadrillo = (f*(alturaLadrillo+paddingLadrillo))+margenSuperior;
+                    ladrillos[c][f].x=xLadrillo;
+                    ladrillos[c][f].y=yLadrillo;
+                    ctx.beginPath();
+                    ctx.rect(xLadrillo, yLadrillo, anchoLadrillo, alturaLadrillo);
+                    switch(f){
+                        case 0:
+                            ctx.fillStyle="#f3360e";
+                            break;
+                        case 1:
+                            ctx.fillStyle="#e5f30e";
+                            break;
+                        case 2:
+                            ctx.fillStyle="#180ef3";
+                            break;
+                        case 3:
+                            ctx.fillStyle="#180ef3";
+                            break;
+                        case 4:
+                            ctx.fillStyle="#180ef3";
+                            break;
+                        case 5:
+                            ctx.fillStyle="#180ef3";
+                            break;
+                        case 6:
+                            ctx.fillStyle="#180ef3";
+                            break;
+                        case 7:
+                            ctx.fillStyle="#180ef3";
+                            break;
+                        case 8:
+                            ctx.fillStyle="#180ef3";
+                            break;
+                        case 9:
+                            ctx.fillStyle="#180ef3";
+                            break;
+                    }
+                    ctx.fill();
+                    ctx.closePath();  
                 }
-                ctx.fill();
-                ctx.closePath();
+                
             }
         }
     }
 
-    let gameOver = () => {
-        ctx.font = "20px Arial";
-        ctx.fillText("GAME OVER", canvas.width/2-60, canvas.height/2);
-        mostrarBoton();
-    }
-    
-    let dibujar = () => {
-        //LIMPIAR CANVAS
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        //DIBUJAR ELEMENTOS
-        dibujarPelota();
-        dibujarPaleta();
-        dibujarLadrillos();
-
-        //CALCULO REBOTE PELOTA CON PARED
-        if(xPelota+dx>canvas.width-radioPelota || xPelota+dx<radioPelota){
-            dx*=-1;
-        }
-        if(yPelota+dy<radioPelota){
-            dy*=-1;
-        }else if(yPelota+dy>canvas.height-radioPelota){
-            vidas=vidas-1;
-            if(vidas===0){
-                gameOver();
-                clearInterval(intervalo);
-            }else{
-                xPaleta=canvas.width/2;
-                yPaleta=canvas.height-(canvas.height/8);
-                xPelota=xPaleta;
-                yPelota=yPaleta-4;
-                dx=2;
-                dy=-2;
+    let detectarColision = () => {
+        for(let c=0; c<columnasLadrillos; c++){
+            for(let f=0; f<filasLadrillos; f++){
+                let ladrillo = ladrillos[c][f];
+                if(ladrillo.estado==1){
+                  if(pelotaX+dx>ladrillo.x && pelotaX+dx<ladrillo.x+anchoLadrillo && pelotaY+pelotaRadio+dy>ladrillo.y && pelotaY+pelotaRadio+dy<ladrillo.y+alturaLadrillo){
+                        dy*=-1;
+                        ladrillo.estado=0;
+                    }  
+                }
             }
         }
-        //CALCULO REBOTE PELOTA CON PALETA
-        if(yPelota+dy==yPaleta && (xPelota+dx>xPaleta-anchoPaleta/2 && xPelota+dx<xPaleta+anchoPaleta/2)){
-            dy*=-1;
-        }
+    }
 
-        //MOVIMIENTO PELOTA
-        xPelota+=dx;
-        yPelota+=dy;
-
-        
-        //MOVIMIENTO PALETA
-        if(flechaDerecha==true && xPaleta<canvas.width-anchoPaleta/2){
-            xPaleta+=2;
-        }
-        if(flechaIzquierda==true && xPaleta>anchoPaleta/2){
-            xPaleta-=2;
-        }
-
+    let status = () => {
         //MOSTRAR STATUS
         if(puntos>=100){
             document.getElementById("puntos").textContent=toString(puntos);
@@ -170,6 +176,64 @@ let juego = () => {
         }else{
             document.getElementById("nivel").textContent="00"+nivel;
         }
+    }
+    let gameOver = () => {
+        ctx.font = "20px Arial";
+        ctx.fillStyle = "#ff0000"
+        ctx.fillText("GAME OVER", canvas.width/2-60, canvas.height/2);
+        mostrarBoton();
+    }
+    
+    let dibujar = () => {
+        //LIMPIAR CANVAS
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        //DIBUJAR ELEMENTOS
+        dibujarPelota();
+        dibujarPaleta();
+        dibujarLadrillos();
+            
+        //CALCULO REBOTE PELOTA CON PARED
+        if(pelotaX+dx>canvas.width-pelotaRadio || pelotaX+dx<pelotaRadio){
+            dx*=-1;
+        }
+        if(pelotaY+dy<pelotaRadio){
+            dy*=-1;
+        }else if(pelotaY+dy>canvas.height-pelotaRadio){
+            vidas-=1;
+            if(vidas===0){
+                gameOver();
+                clearInterval(intervalo);
+            }else{
+                paletaX=canvas.width/2;
+                paletaY=canvas.height-(canvas.height/8);
+                pelotaX=paletaX;
+                pelotaY=paletaY-4;
+                dx=2;
+                dy=-2;
+            }
+        }
+        //CALCULO REBOTE PELOTA CON PALETA
+        if(pelotaY+dy==paletaY && (pelotaX+dx>paletaX-paletaAncho/2 && pelotaX+dx<paletaX+paletaAncho/2)){
+            dy*=-1;
+        }
+
+        if(flechaDerecha==true && paletaX<canvas.width-paletaAncho/2){
+            paletaX+=2;
+        }
+        if(flechaIzquierda==true && paletaX>paletaAncho/2){
+            paletaX-=2;
+        }
+
+        detectarColision();
+
+        //MOVIMIENTO PELOTA
+        pelotaX+=dx;
+        pelotaY+=dy;
+        
+        status();
+
+        
     }
 
     let intervalo=setInterval(dibujar, 10);
