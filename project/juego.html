@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <script type="text/javascript" src="script.js"></script>
 </head>
-<body onload="juego()">
+<body>
 <header>
     <div id="black" class="header">
         <h1>BREAKOUT</h1>
@@ -121,15 +121,15 @@
             <tbody>
             <tr>
                 <th><p>PUNTOS: </p></th>
-                <th><p>000</p></th>
+                <th><p id="puntos">000</p></th>
             </tr>
             <tr>
                 <th><p>VIDAS: </p></th>
-                <th><p>000</p></th>
+                <th><p id="vidas">000</p></th>
             </tr>
             <tr>
                 <th><p>NIVEL:</p></th>
-                <th><p>000</p></th>
+                <th><p id="nivel">000</p></th>
             </tr>
             </tbody>
         </table>
@@ -196,6 +196,9 @@
     <a href="index.html">
         <button class="boton">MENU</button>
     </a>
+    <div id="iniciar">
+        <button type="button" class="boton" onclick="juego(), ocultarBoton()">INICIAR</button>
+    </div>
     <img id="logo" src="styles/images/atari_logo.png" alt="Logo de Atari">
 </footer>
 </body>
