@@ -24,18 +24,18 @@ let juego = () => {
     var dy=-2;
 
     var filasLadrillos = 3;
-    var columnasLadrillos = 5;
-    var anchoLadrillo = 75;
-    var alturaLadrillo = 20;
+    var columnasLadrillos = 10;
+    var anchoLadrillo = 20;
+    var alturaLadrillo = 3;
     var paddingLadrillo = 10;
     var margenSuperior = 30;
-    var margenIzquierdo = 30;
-    var ladrillos = [];
-    for(c=0; c<columnasLadrillos; c++) {
+    var margenIzquierdo = 10;
+    const ladrillos = [];
+    for(let c=0; c<columnasLadrillos; c++) {
         ladrillos[c] = [];
-    }
-    for(r=0; r<filasLadrillos; r++) {
-        ladrillos[c][r] = { x: 0, y: 0 };
+        for (let r = 0; r < filasLadrillos; r++) {
+            ladrillos[c][r] = {x: 0, y: 0};
+        }
     }
 
 
@@ -156,7 +156,7 @@ let juego = () => {
 
         //MOSTRAR STATUS
         if(puntos>=100){
-            document.getElementById("puntos").textContent=puntos;
+            document.getElementById("puntos").textContent=toString(puntos);
         }else if(puntos>=10){
             document.getElementById("puntos").textContent="0"+puntos;
         }else{
@@ -164,7 +164,7 @@ let juego = () => {
         }
         document.getElementById("vidas").textContent="00"+vidas;
         if(nivel>=100){
-            document.getElementById("nivel").textContent=nivel;
+            document.getElementById("nivel").textContent=toString(nivel);
         }else if(nivel>=10){
             document.getElementById("nivel").textContent="0"+nivel;
         }else{
