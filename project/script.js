@@ -113,6 +113,10 @@ let juego = () => {
         },
     }
 
+    /**
+    * Resetea posicion de la pelota y paleta
+    * @method resetPos
+    */
     let resetPos = () => {
         Paleta.x = canvas.width / 2;
         Paleta.y = canvas.height - (canvas.height / 8);
@@ -205,7 +209,7 @@ let juego = () => {
             for (f = 0; f < filasLadrillos; f++) {
                 let ladrillo = ladrillos[c][f];
                 if (ladrillo.estado == 1) {
-                    if (Pelota.x + dx > ladrillo.x && Pelota.x + dx < ladrillo.x + anchoLadrillo && Pelota.y + Pelota.radio + dy > ladrillo.y && Pelota.y + Pelota.radio + dy < ladrillo.y + alturaLadrillo) {
+                    if (Pelota.x+Pelota.radio+dx>ladrillo.x && Pelota.x+Pelota.radio+dx<ladrillo.x+anchoLadrillo && Pelota.y+Pelota.radio+dy > ladrillo.y && Pelota.y + Pelota.radio + dy < ladrillo.y + alturaLadrillo) {
                         dy *= -1;
                         ladrillo.estado = 0;
                         puntos += 1;
@@ -238,7 +242,10 @@ let juego = () => {
         }
     }
 
-
+    /**
+    * Dibuja mensaje game over en el canvas al perder
+    * @method gameOver
+    */
     let gameOver = () => {
         ctx.font = "20px Arial";
         ctx.fillStyle = "#ff0000"
@@ -246,6 +253,10 @@ let juego = () => {
         mostrarBoton();
     }
 
+    /**
+    * Permite avanzar un nivel en el juego
+    * @method avanzarNivel
+    */
     let avanzarNivel = () => {
         puntos += 40;
         nivel += 1;
