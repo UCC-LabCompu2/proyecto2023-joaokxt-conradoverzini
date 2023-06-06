@@ -1,18 +1,32 @@
+/*
+FALTA:
+
+-Cambiar dificultad
+-Sacar email de formulario
+-Sacar borrosidad
+-Alert con nombre de jugador al terminar juego
+
+*/
+
 /**
  * Valida que se llenen todos los campos del formulario
  * @method enviarFormulario
  */
 let enviarFormulario = () => {
-    let nickname, mail, experiencia, botonEnviar;
-    nickname = document.getElementById("nickname").value;
-    mail = document.getElementById("mail").value;
-    experiencia = document.querySelector('input[name="experiencia"]:checked');
-    botonEnviar = document.getElementById("submit");
+    const nickname = document.getElementById("nickname").value;
+    const mail = document.getElementById("mail").value;
+    const experiencia = document.querySelector('input[name="experiencia"]:checked');
+    const dificultad = document.getElementById("dificultad").value;
+    localStorage.setItem("nickname", nickname);
+    localStorage.setItem("mail", mail);
+    localStorage.setItem("experiencia", experiencia);
+    localStorage.setItem("dificultad", dificultad);
 
-    if (nickname == "" || mail == "" || experiencia == null) {
+    if (nickname == null || mail === "" || experiencia == null) {
         alert("Por favor, complete todo el formulario antes de jugar");
-        botonEnviar.disabled = true;
         document.location.reload();
+    } else {
+        window.open("juego.html");
     }
 }
 
@@ -21,8 +35,12 @@ let enviarFormulario = () => {
  * @method juego
  */
 let juego = () => {
-    const canvas = document.getElementById("screen");
-    const ctx = canvas.getContext("2d");
+    let canvas = document.getElementById("screen");
+    let ctx = canvas.getContext("2d");
+
+    const nickname = localStorage.getItem("nickname");
+    const experiencia = localStorage.getItem("experiencia");
+    const dificultad = localStorage.getItem("dificultad");
 
     let vidas = 3;
     let puntos = 0;
@@ -60,11 +78,33 @@ let juego = () => {
         false
     );
 
+    let anchoPaleta;
+    switch (dificultad) {
+        case "Fácil":
+            anchoPaleta = 75;
+            break;
+        case "Regular":
+            anchoPaleta = 50;
+            break;
+        case "Difícil":
+            anchoPaleta = 25;
+            break;
+    }
+    /**
+    * Dibuja la paleta
+    * @method dibujar
+    */
+    /**
+    * Mueve la paleta
+    * @method mover
+    */
+
     let Paleta = {
         x: canvas.width / 2,
         y: canvas.height - (canvas.height / 8),
-        ancho: 50,
+        ancho: anchoPaleta,
         altura: 2,
+        
         dibujar: function () {
             ctx.beginPath();
             ctx.rect(this.x - this.ancho / 2, this.y, this.ancho, this.altura);
@@ -73,10 +113,10 @@ let juego = () => {
             ctx.closePath();
         },
         mover: function () {
-            if (flechaDerecha == true && this.x < canvas.width - this.ancho / 2) {
+            if (flechaDerecha === true && this.x < canvas.width - this.ancho / 2) {
                 this.x += 2;
             }
-            if (flechaIzquierda == true && this.x > this.ancho / 2) {
+            if (flechaIzquierda === true && this.x > this.ancho / 2) {
                 this.x -= 2;
             }
         }
@@ -86,6 +126,10 @@ let juego = () => {
         x: Paleta.x,
         y: Paleta.y - 4,
         radio: 2,
+        /**
+         * Dibuja la pelota
+         * @method dibujar
+         */
         dibujar: function () {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radio, 0, Math.PI * 2);
@@ -93,6 +137,11 @@ let juego = () => {
             ctx.fill();
             ctx.closePath();
         },
+
+        /**
+         * Permite que la pelota rebote al chocar contra otro elemento
+         * @method rebotar
+         */
         rebotar: function () {
             if (this.x + dx > canvas.width - this.radio || this.x + dx < this.radio) {
                 dx *= -1;
@@ -103,7 +152,7 @@ let juego = () => {
                 vidas -= 1;
                 resetPos();
             }
-            if (this.y + dy == Paleta.y && (this.x + dx > Paleta.x - Paleta.ancho / 2 && this.x + dx < Paleta.x + Paleta.ancho / 2)) {
+            if (this.y + dy === Paleta.y && (this.x + dx > Paleta.x - Paleta.ancho / 2 && this.x + dx < Paleta.x + Paleta.ancho / 2)) {
                 dy *= -1;
             }
         },
@@ -114,9 +163,9 @@ let juego = () => {
     }
 
     /**
-    * Resetea posicion de la pelota y paleta
-    * @method resetPos
-    */
+     * Resetea posicion de la pelota y paleta
+     * @method resetPos
+     */
     let resetPos = () => {
         Paleta.x = canvas.width / 2;
         Paleta.y = canvas.height - (canvas.height / 8);
@@ -126,18 +175,19 @@ let juego = () => {
         dy = -2;
     }
 
-    const filasLadrillos = 10;
-    const columnasLadrillos = 16;
-    let cantidadLadrillos = filasLadrillos * columnasLadrillos;
+    const filas = 10;
+    const columnas = 16;
+    let cantidadLadrillos = filas * columnas;
+
     const anchoLadrillo = 16;
-    const alturaLadrillo = 3;
+    const alturaLadrillo = 5;
     const paddingLadrillo = 2;
     const margenSuperior = 5;
     const margenIzquierdo = 5;
     const ladrillos = [];
-    for (let c = 0; c < columnasLadrillos; c++) {
+    for (let c = 0; c < columnas; c++) {
         ladrillos[c] = [];
-        for (let f = 0; f < filasLadrillos; f++) {
+        for (let f = 0; f < filas; f++) {
             ladrillos[c][f] = {
                 x: 0,
                 y: 0,
@@ -152,15 +202,15 @@ let juego = () => {
      * @method dibujarLadrillos
      */
     let dibujarLadrillos = () => {
-        for (c = 0; c < columnasLadrillos; c++) {
-            for (f = 0; f < filasLadrillos; f++) {
-                if (ladrillos[c][f].estado == 1) {
-                    var xLadrillo = (c * (anchoLadrillo + paddingLadrillo)) + margenIzquierdo;
-                    var yLadrillo = (f * (alturaLadrillo + paddingLadrillo)) + margenSuperior;
-                    ladrillos[c][f].x = xLadrillo;
-                    ladrillos[c][f].y = yLadrillo;
+        for (c = 0; c < columnas; c++) {
+            for (f = 0; f < filas; f++) {
+                if (ladrillos[c][f].estado === 1) {
+                    let posx = (c * (anchoLadrillo + paddingLadrillo)) + margenIzquierdo;
+                    let posy = (f * (alturaLadrillo + paddingLadrillo)) + margenSuperior;
+                    ladrillos[c][f].x = posx;
+                    ladrillos[c][f].y = posy;
                     ctx.beginPath();
-                    ctx.rect(xLadrillo, yLadrillo, anchoLadrillo, alturaLadrillo);
+                    ctx.rect(posx, posy, anchoLadrillo, alturaLadrillo);
                     switch (f) {
                         case 0:
                             ctx.fillStyle = "#ab6553";
@@ -205,11 +255,11 @@ let juego = () => {
      * @method detectarColision
      */
     let detectarColision = () => {
-        for (c = 0; c < columnasLadrillos; c++) {
-            for (f = 0; f < filasLadrillos; f++) {
+        for (c = 0; c < columnas; c++) {
+            for (f = 0; f < filas; f++) {
                 let ladrillo = ladrillos[c][f];
-                if (ladrillo.estado == 1) {
-                    if (Pelota.x+Pelota.radio+dx>ladrillo.x && Pelota.x+Pelota.radio+dx<ladrillo.x+anchoLadrillo && Pelota.y+Pelota.radio+dy > ladrillo.y && Pelota.y + Pelota.radio + dy < ladrillo.y + alturaLadrillo) {
+                if (ladrillo.estado === 1) {
+                    if (Pelota.x + Pelota.radio + dx >= ladrillo.x && Pelota.x + Pelota.radio + dx <= ladrillo.x + anchoLadrillo && Pelota.y + Pelota.radio + dy >= ladrillo.y && Pelota.y + Pelota.radio + dy <= ladrillo.y + alturaLadrillo) {
                         dy *= -1;
                         ladrillo.estado = 0;
                         puntos += 1;
@@ -243,31 +293,45 @@ let juego = () => {
     }
 
     /**
-    * Dibuja mensaje game over en el canvas al perder
-    * @method gameOver
-    */
+     * Dibuja mensaje game over en el canvas al perder
+     * @method gameOver
+     */
     let gameOver = () => {
         ctx.font = "20px Arial";
         ctx.fillStyle = "#ff0000"
         ctx.fillText("GAME OVER", canvas.width / 2 - 60, canvas.height / 2);
+
+        let mensaje;
+        if (experiencia === "novato") {
+            mensaje = "Felicitaciones " + nickname + ", hiciste " + puntos + " puntos. Nada mal para un principiante";
+        } else {
+            mensaje = "Felicitaciones " + nickname + ", hiciste " + puntos + " puntos. Sigue así, siempre se puede mejorar";
+        }
+
+        alert(mensaje);
+
         mostrarBoton();
     }
 
     /**
-    * Permite avanzar un nivel en el juego
-    * @method avanzarNivel
-    */
+     * Permite avanzar un nivel en el juego
+     * @method avanzarNivel
+     */
     let avanzarNivel = () => {
         puntos += 40;
         nivel += 1;
         resetPos();
-        for (c = 0; c < columnasLadrillos; c++) {
-            for (f = 0; f < filasLadrillos; f++) {
+        for (c = 0; c < columnas; c++) {
+            for (f = 0; f < filas; f++) {
                 ladrillos[c][f].estado = 1;
             }
         }
     }
 
+    /**
+     * Puesta en marcha del juego
+     * @method jugar
+     */
     let jugar = () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -281,6 +345,7 @@ let juego = () => {
 
         if (cantidadLadrillos === 0) {
             avanzarNivel();
+            cantidadLadrillos = columnas * filas;
         }
         if (vidas === 0) {
             gameOver();
@@ -290,14 +355,23 @@ let juego = () => {
         status();
     }
 
-    let intervalo = setInterval(jugar, 10);
+    let intervalo = setInterval(jugar, 15);
 
 }
 
+
+/**
+ * Muestra el boton de iniciar el juego
+ * @method mostrarBoton
+ */
 let mostrarBoton = () => {
     document.getElementById("iniciar").style.display = 'block';
 }
 
+/**
+ * Oculta el boton de iniciar el juego
+ * @method ocultarBoton
+ */
 let ocultarBoton = () => {
     document.getElementById("iniciar").style.display = 'none';
 }
