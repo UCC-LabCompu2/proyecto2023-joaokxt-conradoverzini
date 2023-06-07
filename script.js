@@ -358,7 +358,7 @@ let juego = () => {
         }
         if (vidas === 0) {
             gameOver();
-            cancelAnimationFrame(jugar);
+            cancelAnimationFrame();
         }else{
             Pelota.dibujar();
             Paleta.dibujar();
@@ -367,9 +367,9 @@ let juego = () => {
             detectarColision();
             Pelota.mover();
             Paleta.mover();
+            status();
+            requestAnimationFrame(jugar);
         }
-        status();
-        requestAnimationFrame(jugar);
     }
 
     requestAnimationFrame(jugar);
