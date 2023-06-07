@@ -1,10 +1,10 @@
+// noinspection JSCheckFunctionSignatures
+
 /*
 FALTA:
 
--Cambiar dificultad
--Sacar email de formulario
 -Sacar borrosidad
--Alert con nombre de jugador al terminar juego
+-Ajustar rebote lateral
 
 */
 
@@ -49,35 +49,6 @@ let juego = () => {
     let dx = 2;
     let dy = -2;
 
-    let flechaDerecha = false;
-    let flechaIzquierda = false;
-
-    let c, f;
-
-    document.addEventListener(
-        "keydown",
-        keyDownHandler = (evento) => {
-            if (evento.keyCode === 39) {
-                flechaDerecha = true;
-            } else if (evento.keyCode === 37) {
-                flechaIzquierda = true;
-            }
-        },
-        false
-    );
-
-    document.addEventListener(
-        "keyup",
-        keyUpHandler = (evento) => {
-            if (evento.keyCode === 39) {
-                flechaDerecha = false;
-            } else if (evento.keyCode === 37) {
-                flechaIzquierda = false;
-            }
-        },
-        false
-    );
-
     let anchoPaleta;
     switch (dificultad) {
         case "Fácil":
@@ -89,22 +60,77 @@ let juego = () => {
         case "Difícil":
             anchoPaleta = 25;
             break;
+        default:
+            anchoPaleta = 50;
+            break;
     }
-    /**
-    * Dibuja la paleta
-    * @method dibujar
-    */
-    /**
-    * Mueve la paleta
-    * @method mover
-    */
+
+    let flechaDerecha = false;
+    let flechaIzquierda = false;
+
+    let c, f;
+
+    const filas = 8;
+    const columnas = 16;
+    let cantidadLadrillos = filas * columnas;
+
+    const anchoLadrillo = 16;
+    const alturaLadrillo = 5;
+    const paddingLadrillo = 2;
+    const margenSuperior = 5;
+    const margenIzquierdo = 5;
+
+    /* Se inicia un array de c elementos (una columna de ladrillos)
+    *  Donde cada elemento es, a su vez, otro array de f elementos (las filas en la columna)
+    *  Cada elemento de la fila es un objeto de clase ladrillo que tiene una posicion x,y y un estado
+    *  El estado del ladrillo se define al dibujarlo más adelante.
+    * */
+    const ladrillos = [];
+    for (c = 0; c < columnas; c++) {
+        ladrillos[c] = [];
+        for (f = 0; f < filas; f++) {
+            ladrillos[c][f] = {
+                x: 0,
+                y: 0,
+                estado: 1
+            };
+        }
+    }
+
+    document.addEventListener(
+        "keydown",
+        (evento) => {
+            if (evento.key === "ArrowRight") {
+                flechaDerecha = true;
+            } else if (evento.key === "ArrowLeft") {
+                flechaIzquierda = true;
+            }
+        },
+        false
+    );
+
+    document.addEventListener(
+        "keyup",
+        (evento) => {
+            if (evento.key === "ArrowRight") {
+                flechaDerecha = false;
+            } else if (evento.key === "ArrowLeft") {
+                flechaIzquierda = false;
+            }
+        },
+        false
+    );
+
 
     let Paleta = {
         x: canvas.width / 2,
         y: canvas.height - (canvas.height / 8),
         ancho: anchoPaleta,
         altura: 2,
-        
+        /**
+         * Dibuja la paleta
+         * @method Paleta.dibujar
+         */
         dibujar: function () {
             ctx.beginPath();
             ctx.rect(this.x - this.ancho / 2, this.y, this.ancho, this.altura);
@@ -112,6 +138,10 @@ let juego = () => {
             ctx.fill();
             ctx.closePath();
         },
+        /**
+         * Mueve la paleta. Se verifica el estado de las flechas y se actualiza la posicion para el siguiente cuadro
+         * @method Paleta.mover
+         */
         mover: function () {
             if (flechaDerecha === true && this.x < canvas.width - this.ancho / 2) {
                 this.x += 2;
@@ -128,7 +158,7 @@ let juego = () => {
         radio: 2,
         /**
          * Dibuja la pelota
-         * @method dibujar
+         * @method Pelota.dibujar
          */
         dibujar: function () {
             ctx.beginPath();
@@ -139,8 +169,8 @@ let juego = () => {
         },
 
         /**
-         * Permite que la pelota rebote al chocar contra otro elemento
-         * @method rebotar
+         * Calcula la posicion de la pelota en el siguiente cuadro. Si se sobrepone con un elemento, se cambia la direccion
+         * @method Pelota.rebotar
          */
         rebotar: function () {
             if (this.x + dx > canvas.width - this.radio || this.x + dx < this.radio) {
@@ -163,7 +193,7 @@ let juego = () => {
     }
 
     /**
-     * Resetea posicion de la pelota y paleta
+     * Resetea la posición de la pelota y la paleta a la inicial.
      * @method resetPos
      */
     let resetPos = () => {
@@ -174,28 +204,6 @@ let juego = () => {
         dx = 2;
         dy = -2;
     }
-
-    const filas = 10;
-    const columnas = 16;
-    let cantidadLadrillos = filas * columnas;
-
-    const anchoLadrillo = 16;
-    const alturaLadrillo = 5;
-    const paddingLadrillo = 2;
-    const margenSuperior = 5;
-    const margenIzquierdo = 5;
-    const ladrillos = [];
-    for (let c = 0; c < columnas; c++) {
-        ladrillos[c] = [];
-        for (let f = 0; f < filas; f++) {
-            ladrillos[c][f] = {
-                x: 0,
-                y: 0,
-                estado: 1
-            };
-        }
-    }
-
 
     /**
      * Dibuja los ladrillos en el canvas
@@ -251,7 +259,7 @@ let juego = () => {
     }
 
     /**
-     * Detecta las colisiones de la pelota con los demas elementos (paredes, ladrillos, paleta)
+     * Detecta las colisiones de la pelota (con los ladrillos)
      * @method detectarColision
      */
     let detectarColision = () => {
