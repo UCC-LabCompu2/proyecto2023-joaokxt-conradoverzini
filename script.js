@@ -46,8 +46,8 @@ let juego = () => {
     let puntos = 0;
     let nivel = 1;
 
-    let dx = 1;
-    let dy = -1;
+    let dx = 0.5;
+    let dy = -0.5;
 
     let anchoPaleta;
     switch (dificultad) {
@@ -91,7 +91,7 @@ let juego = () => {
                 y: 0,
                 estado: 1,
                 ancho: 16,
-                altura: 5,
+                altura: 6,
                 separacion: 2,
             };
         }
@@ -191,7 +191,7 @@ let juego = () => {
                 vidas -= 1;
                 resetPos();
             }
-            if (this.y + dy === Paleta.y && (this.x + dx > Paleta.x - Paleta.ancho / 2 && this.x + dx < Paleta.x + Paleta.ancho / 2)) {
+            if (this.y + dy*2 === Paleta.y && (this.x + dx > Paleta.x - Paleta.ancho / 2 && this.x + dx < Paleta.x + Paleta.ancho / 2)) {
                 dy *= -1;
             }
         },
@@ -210,8 +210,8 @@ let juego = () => {
         Paleta.y = canvas.height - (canvas.height / 8);
         Pelota.x = Paleta.x;
         Pelota.y = Paleta.y - 4;
-        dx = 1;
-        dy = -1;
+        dx = 0.5;
+        dy = -0.5;
     }
 
     /**
@@ -277,15 +277,23 @@ let juego = () => {
                 let ladrillo = ladrillos[c][f];
                 if (ladrillo.estado === 1) {
                     if (Pelota.x + Pelota.radio + dx >= ladrillo.x && Pelota.x + Pelota.radio + dx <= ladrillo.x + ladrillo.ancho && Pelota.y + Pelota.radio + dy >= ladrillo.y && Pelota.y + Pelota.radio + dy <= ladrillo.y + ladrillo.altura) {
-                        dy *= -1;
-                        ladrillo.estado = 0;
-                        puntos += 1;
-                        cantidadLadrillos -= 1;
+                        if(Pelota.x + Pelota.radio < ladrillo.x || Pelota.x + Pelota.radio > ladrillo.x + ladrillo.ancho){
+                            dx *= -1;
+                            ladrillo.estado = 0;
+                            puntos += 1;
+                            cantidadLadrillos -= 1;
+                        }else if(Pelota.y + Pelota.radio < ladrillo.y || Pelota.y + Pelota.radio > ladrillo.y + ladrillo.altura){
+                            dy *= -1;
+                            ladrillo.estado = 0;
+                            puntos += 1;
+                            cantidadLadrillos -= 1;
+                        }
                     }
                 }
             }
         }
     }
+
 
     /**
      * Muestra el status del jugador en la partida (puntos, vidas, nivel)
@@ -326,7 +334,6 @@ let juego = () => {
         }
 
         alert(mensaje);
-
         mostrarBoton();
     }
 
@@ -358,7 +365,7 @@ let juego = () => {
         }
         if (vidas === 0) {
             gameOver();
-            clearInterval(intervalo);
+            cancelAnimationFrame(jugar);
         }else{
             Pelota.dibujar();
             Paleta.dibujar();
@@ -368,11 +375,11 @@ let juego = () => {
             Pelota.mover();
             Paleta.mover();
         }
-
         status();
+        requestAnimationFrame(jugar);
     }
 
-    let intervalo = setInterval(jugar, 15);
+    requestAnimationFrame(jugar);
 
 }
 
