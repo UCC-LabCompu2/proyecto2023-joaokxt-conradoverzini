@@ -1,12 +1,3 @@
-// noinspection JSCheckFunctionSignatures
-
-/*
-FALTA:
-
--Sacar borrosidad
--Ajustar rebote lateral
-
-*/
 
 /**
  * Valida que se llenen todos los campos del formulario
@@ -25,6 +16,8 @@ let enviarFormulario = () => {
     if (nickname == null || mail === "" || experiencia == null) {
         alert("Por favor, complete todo el formulario antes de jugar");
         document.location.reload();
+        document.getElementById("nickname").value = "";
+        document.getElementById("mail").value = "";
     } else {
         window.open("juego.html");
     }
@@ -318,7 +311,7 @@ let juego = () => {
     }
 
     /**
-     * Dibuja mensaje game over en el canvas al perder
+     * Dibuja mensaje game over en el canvas al perder.
      * @method gameOver
      */
     let gameOver = () => {
@@ -328,9 +321,9 @@ let juego = () => {
 
         let mensaje;
         if (experiencia === "novato") {
-            mensaje = "Felicitaciones " + nickname + ", hiciste " + puntos + " puntos. Nada mal para un principiante";
+            mensaje = "Felicitaciones, " + nickname + ", hiciste " + puntos + " puntos. Nada mal para un principiante!";
         } else {
-            mensaje = "Felicitaciones " + nickname + ", hiciste " + puntos + " puntos. Sigue así, siempre se puede mejorar";
+            mensaje = "Felicitaciones, " + nickname + ", hiciste " + puntos + " puntos. Sigue así, siempre se puede hacer mejor!";
         }
 
         alert(mensaje);
@@ -338,7 +331,7 @@ let juego = () => {
     }
 
     /**
-     * Permite avanzar un nivel en el juego
+     * Verifica que se hayan destruido todos los bloques y carga un nuevo nivel
      * @method avanzarNivel
      */
     let avanzarNivel = () => {
@@ -353,7 +346,7 @@ let juego = () => {
     }
 
     /**
-     * Puesta en marcha del juego
+     * Puesta en marcha del juego. Dibuja todos los elementos.
      * @method jugar
      */
     let jugar = () => {
