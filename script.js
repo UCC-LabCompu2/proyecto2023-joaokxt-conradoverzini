@@ -343,14 +343,6 @@ let juego = () => {
     let jugar = () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        Pelota.dibujar();
-        Paleta.dibujar();
-        dibujarLadrillos()
-        Pelota.rebotar();
-        detectarColision();
-        Pelota.mover();
-        Paleta.mover();
-
         if (cantidadLadrillos === 0) {
             avanzarNivel();
             cantidadLadrillos = columnas * filas;
@@ -358,6 +350,14 @@ let juego = () => {
         if (vidas === 0) {
             gameOver();
             clearInterval(intervalo);
+        }else{
+            Pelota.dibujar();
+            Paleta.dibujar();
+            dibujarLadrillos()
+            Pelota.rebotar();
+            detectarColision();
+            Pelota.mover();
+            Paleta.mover();
         }
 
         status();
