@@ -46,8 +46,8 @@ let juego = () => {
     let puntos = 0;
     let nivel = 1;
 
-    let dx = 2;
-    let dy = -2;
+    let dx = 1;
+    let dy = -1;
 
     let anchoPaleta;
     switch (dificultad) {
@@ -74,9 +74,6 @@ let juego = () => {
     const columnas = 16;
     let cantidadLadrillos = filas * columnas;
 
-    const anchoLadrillo = 16;
-    const alturaLadrillo = 5;
-    const paddingLadrillo = 2;
     const margenSuperior = 5;
     const margenIzquierdo = 5;
 
@@ -92,11 +89,19 @@ let juego = () => {
             ladrillos[c][f] = {
                 x: 0,
                 y: 0,
-                estado: 1
+                estado: 1,
+                ancho: 16,
+                altura: 5,
+                separacion: 2,
             };
         }
     }
 
+
+    /**
+     * Capta el 'KeyboardEvent' y compara para saber si se están apretando las flechas
+     * @method listener
+     */
     document.addEventListener(
         "keydown",
         (evento) => {
@@ -109,6 +114,10 @@ let juego = () => {
         false
     );
 
+    /**
+     * Capta el 'KeyboardEvent' y compara para saber si se dejaron de apretar las flechas
+     * @method listener
+     */
     document.addEventListener(
         "keyup",
         (evento) => {
@@ -201,8 +210,8 @@ let juego = () => {
         Paleta.y = canvas.height - (canvas.height / 8);
         Pelota.x = Paleta.x;
         Pelota.y = Paleta.y - 4;
-        dx = 2;
-        dy = -2;
+        dx = 1;
+        dy = -1;
     }
 
     /**
@@ -212,13 +221,14 @@ let juego = () => {
     let dibujarLadrillos = () => {
         for (c = 0; c < columnas; c++) {
             for (f = 0; f < filas; f++) {
-                if (ladrillos[c][f].estado === 1) {
-                    let posx = (c * (anchoLadrillo + paddingLadrillo)) + margenIzquierdo;
-                    let posy = (f * (alturaLadrillo + paddingLadrillo)) + margenSuperior;
+                let ladrillo = ladrillos[c][f];
+                if (ladrillo.estado === 1) {
+                    let posx = (c * (ladrillo.ancho + ladrillo.separacion)) + margenIzquierdo;
+                    let posy = (f * (ladrillo.altura + ladrillo.separacion)) + margenSuperior;
                     ladrillos[c][f].x = posx;
                     ladrillos[c][f].y = posy;
                     ctx.beginPath();
-                    ctx.rect(posx, posy, anchoLadrillo, alturaLadrillo);
+                    ctx.rect(posx, posy, ladrillo.ancho, ladrillo.altura);
                     switch (f) {
                         case 0:
                             ctx.fillStyle = "#ab6553";
@@ -252,7 +262,6 @@ let juego = () => {
                             break;
                     }
                     ctx.fill();
-                    ctx.closePath();
                 }
             }
         }
@@ -267,7 +276,7 @@ let juego = () => {
             for (f = 0; f < filas; f++) {
                 let ladrillo = ladrillos[c][f];
                 if (ladrillo.estado === 1) {
-                    if (Pelota.x + Pelota.radio + dx >= ladrillo.x && Pelota.x + Pelota.radio + dx <= ladrillo.x + anchoLadrillo && Pelota.y + Pelota.radio + dy >= ladrillo.y && Pelota.y + Pelota.radio + dy <= ladrillo.y + alturaLadrillo) {
+                    if (Pelota.x + Pelota.radio + dx >= ladrillo.x && Pelota.x + Pelota.radio + dx <= ladrillo.x + ladrillo.ancho && Pelota.y + Pelota.radio + dy >= ladrillo.y && Pelota.y + Pelota.radio + dy <= ladrillo.y + ladrillo.altura) {
                         dy *= -1;
                         ladrillo.estado = 0;
                         puntos += 1;
