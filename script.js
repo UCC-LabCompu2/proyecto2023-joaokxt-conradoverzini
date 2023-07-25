@@ -13,11 +13,9 @@ let enviarFormulario = () => {
     localStorage.setItem("experiencia", experiencia);
     localStorage.setItem("dificultad", dificultad);
 
-    if (nickname == null || mail === "" || experiencia == null) {
+    if (nickname == "" || mail === "" || experiencia == null) {
         alert("Por favor, complete todo el formulario antes de jugar");
         document.location.reload();
-        document.getElementById("nickname").value = "";
-        document.getElementById("mail").value = "";
     } else {
         window.open("juego.html");
     }
@@ -383,6 +381,7 @@ let juego = () => {
  */
 let mostrarBoton = () => {
     document.getElementById("iniciar").style.display = 'block';
+    document.getElementById("menu").style.display = 'block';
 }
 
 /**
@@ -391,6 +390,7 @@ let mostrarBoton = () => {
  */
 let ocultarBoton = () => {
     document.getElementById("iniciar").style.display = 'none';
+    document.getElementById("menu").style.display = 'none';
 }
 
 
