@@ -13,11 +13,10 @@ let enviarFormulario = () => {
     localStorage.setItem("experiencia", experiencia);
     localStorage.setItem("dificultad", dificultad);
 
-    if (nickname == "" || mail === "" || experiencia == null) {
+    if (nickname === "" || mail === "" || experiencia == null) {
         alert("Por favor, complete todo el formulario antes de jugar");
-        document.location.reload();
     } else {
-        window.open("juego.html");
+        window.location.href = "juego.html";
     }
 }
 
@@ -376,7 +375,7 @@ let juego = () => {
 
 
 /**
- * Muestra el boton de iniciar el juego
+ * Muestra el boton de iniciar el juego y el de menú
  * @method mostrarBoton
  */
 let mostrarBoton = () => {
@@ -385,7 +384,7 @@ let mostrarBoton = () => {
 }
 
 /**
- * Oculta el boton de iniciar el juego
+ * Oculta el boton de iniciar el juego y el de menú
  * @method ocultarBoton
  */
 let ocultarBoton = () => {
